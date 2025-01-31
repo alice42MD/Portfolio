@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import figlet, { Fonts } from "figlet"
 import { slant, alligator, useAsciiText } from "react-ascii-text"
 
@@ -12,7 +12,7 @@ const useFigletText = (text: string, font: Fonts) => {
     figlet.text(text, { font: font }, (err, result) => {
       if (!err && result) setAsciiText(result)
     })
-  }, [text])
+  }, [font, text])
 
   return asciiText
 }
@@ -75,7 +75,7 @@ export default function Header() {
   const classBorder = border ? "focus" : ""
 
   return (
-    <div className="wrap m-[42px]">
+    <div className="wrap m-[42px] md:m-[57px]">
       <div
         className={
           classOpen + " " + classBorder + " " + "flex flex-col items-center "

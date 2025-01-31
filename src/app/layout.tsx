@@ -1,48 +1,11 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono, VT323 } from "next/font/google"
+import { VT323 } from "next/font/google"
 import "./globals.css"
-
 import localFont from "next/font/local"
 
-// Font files can be colocated inside of `app`
-const terminal2 = localFont({
-  src: [
-    {
-      path: "./fonts/terminal-2-sans.ttf",
-      weight: "400",
-    },
-  ],
-  variable: "--font-terminal2-sans",
-})
-
 const nostalgia = localFont({
-  src: [
-    {
-      path: "./fonts/16-bit-7x9-nostalgia.ttf",
-      weight: "400",
-    },
-  ],
+  src: [{ path: "./fonts/16-bit-7x9-nostalgia.ttf", weight: "400" }],
   variable: "--font-nostalgia",
-})
-
-const terminal = localFont({
-  src: [
-    {
-      path: "./fonts/terminal.ttf",
-      weight: "400",
-    },
-  ],
-  variable: "--font-terminal",
-})
-
-const kubasta = localFont({
-  src: [
-    {
-      path: "./fonts/kubasta.ttf",
-      weight: "400",
-    },
-  ],
-  variable: "--font-kubasta",
 })
 
 const vt323 = VT323({
@@ -63,11 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`
-
-           ${vt323.variable} ${terminal.variable} ${terminal2.variable} ${kubasta.variable} ${nostalgia.variable} antialiased`}
-      >
+      <body className={` ${vt323.variable} ${nostalgia.variable} antialiased`}>
         {children}
       </body>
     </html>

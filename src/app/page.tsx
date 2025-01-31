@@ -13,6 +13,7 @@ const categories = [
   { name: "Linkedin" },
   { name: "Github" },
   { name: "Contact" },
+  { name: "light_mode.exec" },
 ]
 
 export default function Home() {
@@ -45,7 +46,7 @@ export default function Home() {
         <main>
           <Header />
           <div
-            className="mx-5 text-green-50 pl-[35px] pr-[35px] text-green-50 size-fill  text-green-600 drop-shadow-[1px_1px_2px_#72f14c]"
+            className="mx-6 md:mx-10 text-green-50 pl-[35px] pr-[35px] text-green-50 size-fill  text-green-600 drop-shadow-[1px_1px_2px_#72f14c]"
             id={"content"}
           >
             <div className="font-[family-name:var(--font-nostalgia)] text-[20px] ">
@@ -59,7 +60,7 @@ export default function Home() {
               </div>
 
               <div className="my-4">
-                <span>Portfolio ~$: {">"}</span>
+                <span>Portfolio/Aliciao ~$: {">"}</span>
                 <span> {displayedCategory}</span>
               </div>
             </div>

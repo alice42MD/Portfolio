@@ -3,15 +3,15 @@
 @import "tailwindcss/utilities";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --color: green;
+  --background: #2a06cd;
+  --foreground: rgb(255, 255, 0);
+  --color: rgb(255, 255, 0);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: rgb(6, 102, 6);
-    --foreground: #ededed;
+    --foreground: green;
     --color: green;
   }
 }
@@ -22,11 +22,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   color: var(--color);
 }
+
 .wrap {
   position: relative;
-  /* width: 300px;
-  height: 500px; */
-  /* background: #ddd; */
   overflow: hidden;
 }
 
@@ -39,21 +37,9 @@ body {
   translate: 0 0;
 }
 
-#toggle {
-  position: absolute;
-  top: 0;
-  left: 340px;
-}
-
 .content {
   background: none;
   border: 0;
-  /* box-sizing: border-box;
-  margin: 1em;
-  padding: 1em 2em;
-
-  font-size: inherit;
-  font-weight: 700; */
 
   position: relative;
   vertical-align: middle;

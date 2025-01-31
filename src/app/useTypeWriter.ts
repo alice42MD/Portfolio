@@ -58,7 +58,8 @@ export const useTypewriter = (text: string, speed: number, withCursor: boolean =
     }, 500) // Changement toutes les 500ms
 
     return () => clearInterval(cursorInterval)
-  }, [])
-  if (displayText.length === 0)return `${showCursor ? "_" : " "}` // Curseur dynamique
-  return `${displayText}${showCursor ? "_" : " "}` // Curseur dynamique
+  }, [withCursor])
+
+  if (displayText.length === 0) return `${showCursor ? "_" : " "}`
+  return `${displayText}${showCursor ? "_" : " "}`
 }
