@@ -6,7 +6,17 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: "var(--background)",
+        // foreground: "var(--foreground)",
+        primary: "rgb(var(--primary))",
+        shadowColor: "rgb(var(--shadowColor))",
+      },
+      dropShadow: {
+        shadow: '1px 1px 2px rgb(var(--shadowColor))'
+      }
+    },
   },
   plugins: [],
 } 

@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${vt323.variable} ${nostalgia.variable} antialiased`}>
+      <body className={`${vt323.variable} ${nostalgia.variable} antialiased `}>
         {children}
       </body>
     </html>

@@ -46,7 +46,7 @@ export default function Home() {
         <main>
           <Header />
           <div
-            className="mx-6 md:mx-10 text-green-50 pl-[35px] pr-[35px] text-green-50 size-fill  text-green-600 drop-shadow-[1px_1px_2px_#72f14c]"
+            className="mx-6 md:mx-10 pl-[35px] pr-[35px] size-fill  text-primary drop-shadow-shadow"
             id={"content"}
           >
             <div className="font-[family-name:var(--font-nostalgia)] text-[20px] ">
@@ -60,7 +60,7 @@ export default function Home() {
               </div>
 
               <div className="my-4">
-                <span>Portfolio/Aliciao ~$: {">"}</span>
+                <span>Portfolio ~$: {">"}</span>
                 <span> {displayedCategory}</span>
               </div>
             </div>
