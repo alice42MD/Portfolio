@@ -8,13 +8,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
+        background: "rgb(var(--background))",
         // foreground: "var(--foreground)",
         primary: "rgb(var(--primary))",
-        shadowColor: "rgb(var(--shadowColor))",
+        shadowColor: "rgba(var(--shadowColor))",
       },
       dropShadow: {
         shadow: '1px 1px 2px rgb(var(--shadowColor))'
+      },
+      opacity: {
+        myOpacity: 'var(--myOpacity)'
       }
     },
   },

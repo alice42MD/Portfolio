@@ -2,29 +2,41 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-:root {
-  --background: #2a06cd;
-  /* --foreground: rgb(255, 255, 0); */
-
+/* :root {
+  --background: 42, 6, 205;
   --primary: 255, 255, 0;
   --shadowColor: 244, 247, 18;
+  --my-opacity: 0.6;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: rgb(6, 102, 6);
-    /* --foreground: green; */
-
-    --primary: 22 163 74;
+    --background: 6, 102, 6;
+    --primary: 22, 163, 74;
     --shadowColor: 114, 241, 76;
+    --my-opacity: 0.8;
   }
+} */
+
+.dark {
+  --background: 6, 102, 6;
+  --primary: 22, 163, 74;
+  --shadowColor: 173, 255, 47, 0.75;
+  --myOpacity: 0.8;
+}
+
+.light {
+  --background: 42, 6, 205;
+  --primary: 214, 214, 43;
+  --shadowColor: 244, 247, 18, 0.75;
+  --myOpacity: 0.6;
 }
 
 body {
-  background: var(--background);
+  background: theme("colors.background");
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--primary);
-  filter: var(--shadow);
+  color: theme("colors.primary");
+  filter: theme("dropShadow.shadow");
 }
 
 .wrap {
@@ -60,9 +72,8 @@ body {
 
 .center {
   .focus {
-    color: var(--primary);
-    filter: var(--shadow);
-    filter: var(--shadow);
+    color: theme("colors.primary");
+    filter: theme("dropShadow.shadow");
   }
 
   &::before,
@@ -75,17 +86,16 @@ body {
   }
 
   &::before {
-    border-image: "#";
-    border-top: 2px dashed var(--primary);
-    border-bottom: 2px dashed var(--primary);
-    filter: var(--shadow);
+    border-top: 2px dashed theme("colors.primary");
+    border-bottom: 2px dashed theme("colors.primary");
+    filter: theme("dropShadow.shadow");
     transform: scale3d(0, 1, 1);
   }
 
   &::after {
-    border-left: 2px dashed var(--primary);
-    border-right: 2px dashed var(--primary);
-    filter: var(--shadow);
+    border-left: 2px dashed theme("colors.primary");
+    border-right: 2px dashed theme("colors.primary");
+    filter: theme("dropShadow.shadow");
     transform: scale3d(1, 0, 1);
   }
 
@@ -93,5 +103,7 @@ body {
   &.focus::after {
     transform: scale3d(1, 1, 1);
     transition: transform 0.5s;
+    filter: blur(0.5px);
+    filter: theme("dropShadow.shadow");
   }
 }
