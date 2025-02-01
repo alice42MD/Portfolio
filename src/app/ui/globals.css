@@ -1,0 +1,109 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* :root {
+  --background: 42, 6, 205;
+  --primary: 255, 255, 0;
+  --shadowColor: 244, 247, 18;
+  --my-opacity: 0.6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 6, 102, 6;
+    --primary: 22, 163, 74;
+    --shadowColor: 114, 241, 76;
+    --my-opacity: 0.8;
+  }
+} */
+
+.dark {
+  --background: 6, 102, 6;
+  --primary: 22, 163, 74;
+  --shadowColor: 173, 255, 47, 0.75;
+  --myOpacity: 0.8;
+}
+
+.light {
+  --background: 42, 6, 205;
+  --primary: 214, 214, 43;
+  --shadowColor: 244, 247, 18, 0.75;
+  --myOpacity: 0.6;
+}
+
+body {
+  background: theme("colors.background");
+  font-family: Arial, Helvetica, sans-serif;
+  color: theme("colors.primary");
+  filter: theme("dropShadow.shadow");
+}
+
+.wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  transition: translate 0.5s;
+  translate: 0 -100%;
+}
+
+.opened {
+  translate: 0 0;
+}
+
+.content {
+  background: none;
+  border: 0;
+
+  position: relative;
+  vertical-align: middle;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.center {
+  .focus {
+    color: theme("colors.primary");
+    filter: theme("dropShadow.shadow");
+  }
+
+  &::before,
+  &::after {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: center;
+  }
+
+  &::before {
+    border-top: 2px dashed theme("colors.primary");
+    border-bottom: 2px dashed theme("colors.primary");
+    filter: theme("dropShadow.shadow");
+    transform: scale3d(0, 1, 1);
+  }
+
+  &::after {
+    border-left: 2px dashed theme("colors.primary");
+    border-right: 2px dashed theme("colors.primary");
+    filter: theme("dropShadow.shadow");
+    transform: scale3d(1, 0, 1);
+  }
+
+  &.focus::before,
+  &.focus::after {
+    transform: scale3d(1, 1, 1);
+    transition: transform 0.5s;
+    filter: blur(0.5px);
+    filter: theme("dropShadow.shadow");
+  }
+}
