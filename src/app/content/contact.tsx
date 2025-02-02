@@ -6,7 +6,7 @@ export default function Contact() {
   const [subject, setSubject] = useState<string>("")
   const [content, setContent] = useState<string>("")
 
-  const a = `${process.env.NEXT_PUBLIC_VERCEL_ENV}'/'${process.env.NEXT_PUBLIC_VERCEL_TARGET_ENV}`
+  const a = `${process.env.NEXT_PUBLIC_VERCEL_ENV}/production`
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
