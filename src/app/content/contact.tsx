@@ -10,7 +10,7 @@ export default function Contact() {
     e.preventDefault()
     try {
       const response = await fetch(
-        `${process.env.VERCEL_URL || "http://localhost:3000"}/api/`,
+        `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/api/`,
         {
           method: "POST",
           headers: {
