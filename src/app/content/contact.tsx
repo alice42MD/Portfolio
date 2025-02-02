@@ -10,7 +10,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const response = await fetch(`${a} || "http://localhost:3000"}/api/`, {
+      const response = await fetch(`${a || "http://localhost:3000"}/api/}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
