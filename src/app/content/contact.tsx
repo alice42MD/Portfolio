@@ -9,15 +9,16 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const response = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-        },
-        body: JSON.stringify({ name, email, subject, content }),
-      })
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/api/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, subject, content }),
+        }
+      )
       const data = await response.json()
       alert(data.message)
     } catch (error) {
