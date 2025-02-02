@@ -14,7 +14,10 @@ export default function Contact() {
         {
           method: "POST",
           headers: {
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PATCH",
           },
           body: JSON.stringify({ name, email, subject, content }),
         }
