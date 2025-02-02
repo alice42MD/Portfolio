@@ -39,6 +39,41 @@ body {
   filter: theme("dropShadow.shadow");
 }
 
+/* Change Autocomplete styles in Chrome*/
+input,
+textarea,
+select,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:focus-visible,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus-visible,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:focus-visible {
+  -webkit-text-fill-color: theme("colors.primary");
+  -webkit-box-shadow: inset 0 0 0 100px unset;
+  -webkit-transition:
+    none 0s 600000s,
+    theme("colors.primary") 0s 600000s;
+  border: 1px dashed rgb(88 155 29);
+  background: none;
+  outline-offset: none;
+  outline: none;
+  caret-color: transparent;
+  filter: none;
+  color: theme("colors.primary");
+  -webkit-text-fill-color: theme("colors.primary");
+  -webkit-box-shadow: 0 0 0px 40rem unset inset;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* HEADER */
 .wrap {
   position: relative;
   overflow: hidden;

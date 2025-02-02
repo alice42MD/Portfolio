@@ -1,8 +1,8 @@
 "use client"
 
 import { ReactNode, useEffect, useState } from "react"
-import { useTypewriter } from "./useTypeWriter"
-import { categories } from "./data"
+import { useTypewriter } from "./utils/useTypeWriter"
+import { categories } from "./utils/categories"
 import Header from "./ui/header"
 import Background from "./ui/background"
 import Content from "./ui/content"
@@ -10,7 +10,7 @@ import Content from "./ui/content"
 export default function Home() {
   const [text, setText] = useState<string>("")
   const [theme, setTheme] = useState<string>("")
-  const [child, setChild] = useState<string | undefined | ReactNode>(undefined)
+  const [child, setChild] = useState<ReactNode>(undefined)
 
   const displayedCategory = useTypewriter(text, 50)
 
@@ -39,18 +39,18 @@ export default function Home() {
       .filter((a) => a.name !== `${theme}_mode.ts`)
       .map((category) => (
         <div
-          className=""
           key={category.name}
           onClick={() => {
             setChild(undefined)
             setText(`${category.access} ${category.name}`)
-            if (category.theme) {
+            if (category.access === "ts-node") {
               setTheme(category.theme)
             }
-            setTimeout(function () {
-              setChild(category.child)
-            }, 1000)
-            if (category.action)
+            if (category.access === "cd" || category.access === "cat")
+              setTimeout(function () {
+                setChild(category.child)
+              }, 1000)
+            if (category.access === "open")
               setTimeout(function () {
                 category.action()
               }, 1000)

@@ -28,7 +28,7 @@ export default function Content({
           <span>Portfolio ~$: {"> "}</span>
           <span>{displayedCategory}</span>
         </div>
-        <div>{child}</div>
+        <div className="h-10">{child}</div>
       </div>
     </div>
   )

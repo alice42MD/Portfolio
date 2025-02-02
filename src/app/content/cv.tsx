@@ -1,6 +1,6 @@
 export default function CV() {
   return (
-    <div className="grid grid-cols-3 gap-4 h-10">
+    <div className="grid grid-cols-3 gap-4">
       <div className="w-full">
         <h2>SKILLS</h2> <br />
         <ul>
@@ -71,7 +71,7 @@ export default function CV() {
           Technologies used: ReactJS, TypeScript, AntD, Redux-Observable,
           Styled-Components, RxJs, StoryBook, Jest, Cypress, NodeJS, Redis,
           EsLint, Prettier
-        </span>{" "}
+        </span>
         <br /> <br />
         <span>R&D Developer - Lab 42</span> <br />
         <span>Veepee, Saint-Denis</span> <br />

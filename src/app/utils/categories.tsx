@@ -1,9 +1,29 @@
-import AboutMe from "./content/aboutMe"
-import Contact from "./content/contact"
-import CV from "./content/cv"
-import ListProjects from "./content/listProjects"
+import { ReactNode } from "react"
+import AboutMe from "../content/aboutMe"
+import Contact from "../content/contact"
+import CV from "../content/cv"
+import ListProjects from "../content/listProjects"
 
-export const categories = [
+type Category =
+  | {
+      name: string
+      access: "ts-node"
+      theme: "light" | "dark"
+    }
+  | {
+      name: string
+      access: "cd" | "cat"
+      child: ReactNode
+    }
+  | {
+      name: string
+      access: "open"
+      action: () => Window | null
+    }
+
+type Categories = Category[]
+
+export const categories: Categories = [
   // theme mode
   {
     name: "light_mode.ts",
