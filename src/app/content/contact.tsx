@@ -1,6 +1,5 @@
 import { useState } from "react"
 import CustomInput from "../ui/customInput"
-import { CustomInput2 } from "../ui/inputTest"
 
 export default function Contact() {
   const [name, setName] = useState<string>("")
@@ -35,9 +34,6 @@ export default function Contact() {
   return (
     <div className="w-full flex items-center justify-between">
       <form className="w-full" onSubmit={handleSubmit}>
-        {/* <label htmlFor="name">Full Name</label> */}
-        {/* <CustomInput2 /> */}
-
         <label htmlFor="name">Full Name</label>
         <CustomInput
           id={"name"}
