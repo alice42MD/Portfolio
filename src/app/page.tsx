@@ -42,11 +42,17 @@ export default function Home() {
           key={category.name}
           onClick={() => {
             setChild(undefined)
-            setText(`${category.access} ${category.name}`)
+            if (category.access === "mail")
+              setText(`/usr/sbin/sendmail alicemartin.crea@gmail.com < `)
+            else setText(`${category.access} ${category.name}`)
             if (category.access === "ts-node") {
               setTheme(category.theme)
             }
-            if (category.access === "cd" || category.access === "cat")
+            if (
+              category.access === "cd" ||
+              category.access === "cat" ||
+              category.access === "mail"
+            )
               setTimeout(function () {
                 setChild(category.child)
               }, 1000)

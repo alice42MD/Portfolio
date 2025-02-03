@@ -60,7 +60,7 @@ select:-webkit-autofill:focus-visible {
   -webkit-transition:
     none 0s 600000s,
     theme("colors.primary") 0s 600000s;
-  border: 1px dashed rgb(88 155 29);
+  border: 1px dashed theme("colors.primary");
   background: none;
   outline-offset: none;
   outline: none;
@@ -71,6 +71,14 @@ select:-webkit-autofill:focus-visible {
   -webkit-box-shadow: 0 0 0px 40rem unset inset;
   -webkit-background-clip: text;
   background-clip: text;
+  filter: theme("dropShadow.shadow");
+}
+
+/* CARET */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 /* HEADER */
@@ -108,7 +116,7 @@ select:-webkit-autofill:focus-visible {
 .center {
   .focus {
     color: theme("colors.primary");
-    filter: theme("dropShadow.shadow");
+    /* filter: theme("dropShadow.shadow"); */
   }
 
   &::before,
@@ -123,14 +131,14 @@ select:-webkit-autofill:focus-visible {
   &::before {
     border-top: 2px dashed theme("colors.primary");
     border-bottom: 2px dashed theme("colors.primary");
-    filter: theme("dropShadow.shadow");
+    /* filter: theme("dropShadow.shadow"); */
     transform: scale3d(0, 1, 1);
   }
 
   &::after {
     border-left: 2px dashed theme("colors.primary");
     border-right: 2px dashed theme("colors.primary");
-    filter: theme("dropShadow.shadow");
+    /* filter: theme("dropShadow.shadow"); */
     transform: scale3d(1, 0, 1);
   }
 
@@ -138,7 +146,7 @@ select:-webkit-autofill:focus-visible {
   &.focus::after {
     transform: scale3d(1, 1, 1);
     transition: transform 0.5s;
-    filter: blur(0.5px);
-    filter: theme("dropShadow.shadow");
+    /* filter: blur(0.5px);
+    filter: theme("dropShadow.shadow"); */
   }
 }

@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-//👇🏻 ticket ID generator function
 import { v4 as generateID } from "uuid";
-//👇🏻 imports the email template
 import TicketCreated from "../../emails/ticketCreated";
-//👇🏻 imports Resend
 import { Resend } from "resend";
 
 
@@ -14,9 +11,9 @@ export async function POST(req: NextRequest) {
     const { name, subject, content, email } = await req.json();
 
     const { data, error } = await resend.emails.send({
-        from: "Acme <onboarding@resend.dev>",
+        from: "Portfolio",
         to: [toEmail],
-        subject: "Ticket Confirmation Email 🎉",
+        subject: "Contact Email 🎉",
         react: TicketCreated({ username: name, subject, content, email, ticketID: generateID()}),
     });
 
