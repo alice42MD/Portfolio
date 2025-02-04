@@ -20,10 +20,7 @@ const CustomInput = ({
     paused,
   } = useCursor(value)
 
-  const inputRef = useRef<HTMLInputElement | null>(null)
   function handleOnFocusLabel(event: any) {
-    event.preventDefault()
-    inputRef.current?.focus()
     handleOnFocusCursor(event)
   }
 
@@ -35,9 +32,9 @@ const CustomInput = ({
     value.slice(cursorPosition + 1),
   ]
 
-  console.log(paused, inCursor)
   return (
     <label className="label" onClick={handleOnFocusLabel}>
+      <span>input:</span>
       <span className={`input-mirror ${type === "textarea" && "h-[250px]"}`}>
         {beforeCursor}
         <span
@@ -47,18 +44,29 @@ const CustomInput = ({
         </span>
         {afterCursor}
       </span>
-
-      <input
-        ref={inputRef}
-        required
-        className="inputHidde"
-        onKeyDown={handleKeyDown}
-        onChange={(e) => setValue(e.target.value)}
-        onBlur={handleOnBlur}
-        id={id}
-        type={type}
-        value={value}
-      />
+      {type === "textarea" ? (
+        <textarea
+          rows={5}
+          className="inputHidde"
+          id={id}
+          required
+          value={value}
+          onKeyDown={handleKeyDown}
+          onChange={(e) => setValue(e.target.value)}
+          onBlur={handleOnBlur}
+        />
+      ) : (
+        <input
+          required
+          className="inputHidde"
+          onKeyDown={handleKeyDown}
+          onChange={(e) => setValue(e.target.value)}
+          onBlur={handleOnBlur}
+          id={id}
+          type={type}
+          value={value}
+        />
+      )}
     </label>
   )
 }
