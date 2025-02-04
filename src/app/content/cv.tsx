@@ -4,27 +4,32 @@ export default function CV() {
       <div className="w-full">
         <h2>SKILLS</h2> <br />
         <ul>
-          <li> React</li>
-          <li> JS</li>
-          <li> TypeScript</li>
-          <li> Redux</li>
-          <li> Node JS </li>
-          <li> JavaScript</li>
-          <li> Git</li>
+          <li>React</li>
+          <li>Tailwind</li>
+          <li>TypeScript</li>
+          <li>NextJs</li>
+          <li>Node JS </li>
+          <li>JavaScript</li>
+          <li>Jest</li>
+          <li>Cypress</li>
+          <li>Vite</li>
+          <li>Vitest</li>
+          <li>Webpack</li>
+          <li>StoryBook</li>
+          <li>StyledComponent/Emotion</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>Git</li>
           <li>Npm</li>
           <li>Yarn</li>
+          <li>SQL</li>
+          <li>Mongo DB</li>
+          <li>FireBase</li>
+          <li>Xcode</li>
           <li>Shell</li>
           <li>Unix</li>
           <li>OSX</li>
           <li>C</li>
-          <li>SQL</li>
-          <li> Mongo DB</li>
-          <li>FireBase</li>
-          <li>Xcode</li>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>NextJs</li>
-          <li>Tailwind</li>
         </ul>
         <br />
         <h2>EDUCATION</h2> <br />
