@@ -32,7 +32,7 @@ export const categories: Categories = [
   },
   { name: "dark_mode.ts", access: "ts-node", theme: "dark" },
   // Components
-  { name: "Projects", access: "cd", child: <ListProjects /> },
+  // { name: "Projects", access: "cd", child: <ListProjects /> },
   { name: "README.md", access: "cat", child: <AboutMe /> },
   {
     name: "Contact",
