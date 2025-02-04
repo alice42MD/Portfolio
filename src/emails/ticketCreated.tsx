@@ -3,13 +3,10 @@ import {
   Body,
   Container,
   Head,
-  Heading,
   Hr,
   Html,
-  Link,
   Preview,
   Text,
-  Tailwind,
 } from "@react-email/components"
 
 interface TicketCreatedProps {
@@ -40,7 +37,11 @@ export const TicketCreated = ({
           <Text>
             From:<i>{email}</i>
           </Text>
+          <Text>Name: </Text>
+          <Text>{username} </Text>
+          <Text>Subject: </Text>
           <Text>{subject}</Text>
+          <Text>Message: </Text>
           <Text>{content}</Text>
           <Text>
             Sent via Portfolio/Contact
