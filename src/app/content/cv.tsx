@@ -5,11 +5,11 @@ export default function CV() {
         <h2>SKILLS</h2> <br />
         <ul>
           <li>React</li>
-          <li>Tailwind</li>
           <li>TypeScript</li>
           <li>NextJs</li>
           <li>Node JS </li>
           <li>JavaScript</li>
+          <li>Tailwind</li>
           <li>Jest</li>
           <li>Cypress</li>
           <li>Vite</li>
