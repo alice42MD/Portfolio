@@ -14,7 +14,7 @@ export default {
         shadowColor: "rgba(var(--shadowColor))",
       },
       dropShadow: {
-        shadow: '1px 1px 2px rgb(var(--shadowColor))'
+        shadow: '1px 1px 5px rgb(var(--shadowColor))'
       },
       opacity: {
         myOpacity: 'var(--myOpacity)'
