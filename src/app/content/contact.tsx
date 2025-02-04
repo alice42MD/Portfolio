@@ -1,5 +1,5 @@
 import { useState } from "react"
-import CustomInput from "../ui/inputTest"
+import CustomInput from "../ui/customInput"
 
 export default function Contact() {
   const [name, setName] = useState<string>("")
