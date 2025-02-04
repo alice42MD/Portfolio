@@ -1,4 +1,5 @@
 import { useState } from "react"
+import CustomInput from "../ui/customInput"
 
 export default function Contact() {
   const [name, setName] = useState<string>("")
@@ -30,52 +31,36 @@ export default function Contact() {
   return (
     <div className="w-full flex items-center justify-between">
       <form className="w-full" onSubmit={handleSubmit}>
-        <label htmlFor="name" className="opacity-60">
-          Full Name
-        </label>
-        <input
-          type="text"
-          className="w-full mb-3"
-          id="name"
-          required
+        <label htmlFor="name">Full Name</label>
+        <CustomInput
+          id={"name"}
+          type={"text"}
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          setValue={setName}
         />
 
-        <label htmlFor="email" className="opacity-60">
-          Email Address
-        </label>
-        <input
-          type="email"
-          className="w-full mb-3 caret-underscore"
-          id="email"
+        <label htmlFor="email">Email Address</label>
+        <CustomInput
+          id={"email"}
+          type={"email"}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
+          setValue={setEmail}
         />
 
-        <label htmlFor="subject" className="opacity-60">
-          Subject
-        </label>
-        <input
-          type="text"
-          className="w-full mb-3 caret-underscore"
-          id="subject"
+        <label htmlFor="subject">Subject</label>
+        <CustomInput
+          id={"subject"}
+          type={"text"}
           value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-          required
+          setValue={setSubject}
         />
 
-        <label htmlFor="message" className="opacity-60">
-          Message
-        </label>
-        <textarea
-          rows={5}
-          className="w-full mb-3 caret-underscore"
-          id="message"
-          required
+        <label htmlFor="message">Message</label>
+        <CustomInput
+          id={"message"}
+          type={"textarea"}
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          setValue={setContent}
         />
 
         <button className="w-full py-4 px-3 rounded-md">SEND MESSAGE</button>

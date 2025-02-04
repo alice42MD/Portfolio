@@ -12,7 +12,7 @@ type Category =
     }
   | {
       name: string
-      access: "cd" | "cat"
+      access: "cd" | "cat" | "mail"
       child: ReactNode
     }
   | {
@@ -34,7 +34,11 @@ export const categories: Categories = [
   // Components
   { name: "Projects", access: "cd", child: <ListProjects /> },
   { name: "README.md", access: "cat", child: <AboutMe /> },
-  { name: "Contact", access: "cd", child: <Contact /> },
+  {
+    name: "Contact",
+    access: "mail",
+    child: <Contact />,
+  },
   { name: "CV", access: "cat", child: <CV /> },
   // links
   {

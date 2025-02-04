@@ -10,7 +10,6 @@ export default {
     extend: {
       colors: {
         background: "rgb(var(--background))",
-        // foreground: "var(--foreground)",
         primary: "rgb(var(--primary))",
         shadowColor: "rgba(var(--shadowColor))",
       },
