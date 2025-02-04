@@ -33,7 +33,7 @@ const CustomInput = ({
   ]
 
   return (
-    <label className="label" onClick={handleOnFocusLabel}>
+    <label className="label cursor-text" onClick={handleOnFocusLabel}>
       <span>input:</span>
       <span className={`input-mirror ${type === "textarea" && "h-[250px]"}`}>
         {beforeCursor}

@@ -56,7 +56,6 @@ function useCursor(content: string | any[]) {
 
   function handleKeyDown({ key }: { key: string }) {
     pauseWithTimeout();
-    console.log(key)
     updateShifts(key);
   }
 
