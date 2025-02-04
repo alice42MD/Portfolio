@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react"
+import React, { useRef } from "react"
+import useCursor from "../utils/useCursor"
 
 const CustomInput = ({
   id,
@@ -11,54 +12,54 @@ const CustomInput = ({
   value: string
   setValue: (value: string) => void
 }) => {
+  const {
+    handleOnFocus: handleOnFocusCursor,
+    handleOnBlur,
+    handleKeyDown,
+    shifts,
+    paused,
+  } = useCursor(value)
+
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  function handleOnFocusLabel(event: any) {
+    event.preventDefault()
+    inputRef.current?.focus()
+    handleOnFocusCursor(event)
+  }
+
+  const cursorPosition = value.length - shifts
+
+  const [beforeCursor, inCursor, afterCursor] = [
+    value.slice(0, cursorPosition),
+    value.charAt(cursorPosition),
+    value.slice(cursorPosition + 1),
+  ]
+
+  console.log(paused, inCursor)
   return (
-    <div
-      className="w-full"
-      style={{ position: "relative", display: "inline-block" }}
-    >
-      {type === "textarea" ? (
-        <textarea
-          rows={5}
-          className="w-full mb-3 px-3"
-          id={id}
-          required
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          style={{
-            fontSize: "20px",
-            background: "transparent",
-            caretColor: "transparent",
-            textWrap: "wrap",
-          }}
-        />
-      ) : (
-        <input
-          id={id}
-          type={type}
-          value={value}
-          className="w-full mb-3 px-3"
-          onChange={(e) => setValue(e.target.value)}
-          style={{
-            fontSize: "20px",
-            background: "transparent",
-            caretColor: "transparent",
-          }}
-        />
-      )}
-      <span
-        className="px-3"
-        style={{
-          textWrap: "wrap",
-          position: "absolute",
-          top: "0",
-          left: `${value.length * 10}px`,
-          fontSize: "20px",
-          animation: "blink 1s step-end infinite",
-        }}
-      >
-        _
+    <label className="label" onClick={handleOnFocusLabel}>
+      <span className={`input-mirror ${type === "textarea" && "h-[250px]"}`}>
+        {beforeCursor}
+        <span
+          className={`text-background bg-primary ${inCursor.length > 0 ? `before:content-['${inCursor}']` : "before:content-['_']"} ${paused ? "hidden" : "animate-blink"}`}
+        >
+          {inCursor}
+        </span>
+        {afterCursor}
       </span>
-    </div>
+
+      <input
+        ref={inputRef}
+        required
+        className="inputHidde"
+        onKeyDown={handleKeyDown}
+        onChange={(e) => setValue(e.target.value)}
+        onBlur={handleOnBlur}
+        id={id}
+        type={type}
+        value={value}
+      />
+    </label>
   )
 }
 

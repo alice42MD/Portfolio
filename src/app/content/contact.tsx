@@ -7,9 +7,6 @@ export default function Contact() {
   const [subject, setSubject] = useState<string>("")
   const [content, setContent] = useState<string>("")
 
-  const [isInputFocused, setInputFocused] = useState(false)
-  const [caretPosition, setCaretPosition] = useState({ start: 0, end: 0 })
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {

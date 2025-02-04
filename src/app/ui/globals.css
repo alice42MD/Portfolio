@@ -40,7 +40,7 @@ body {
 }
 
 /* Change Autocomplete styles in Chrome*/
-input,
+/* input,
 textarea,
 select,
 input:-webkit-autofill,
@@ -54,7 +54,13 @@ textarea:-webkit-autofill:focus-visible,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus,
-select:-webkit-autofill:focus-visible {
+select:-webkit-autofill:focus-visible,
+.input,
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:focus-visible 
+{
   -webkit-text-fill-color: theme("colors.primary");
   -webkit-box-shadow: inset 0 0 0 100px unset;
   -webkit-transition:
@@ -72,14 +78,31 @@ select:-webkit-autofill:focus-visible {
   -webkit-background-clip: text;
   background-clip: text;
   filter: theme("dropShadow.shadow");
-}
+} */
 
-/* CARET */
-@keyframes blink {
-  50% {
+/* CUSTOM INPUT WITH CARET */
+/* @keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
     opacity: 0;
   }
 }
+
+.animate-blink {
+  animation: blink 1s ease infinite;
+}
+
+.clip-rect {
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.clip-path-inset-50 {
+  clip-path: inset(50%);
+} */
 
 /* HEADER */
 .wrap {
@@ -148,5 +171,56 @@ select:-webkit-autofill:focus-visible {
     transition: transform 0.5s;
     /* filter: blur(0.5px);
     filter: theme("dropShadow.shadow"); */
+  }
+}
+
+.inputHidde {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s ease infinite;
+}
+
+.input-mirror {
+  display: block;
+  min-height: 27.5px;
+  width: 20rem;
+  word-break: break-all;
+  white-space: pre-wrap;
+  position: relative;
+  border: 1px dashed theme("colors.primary");
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  width: 100%;
+
+  > span:before {
+    color: theme("colors.background");
+    background: theme("colors.primary");
+    height: 1rem;
+    width: 10px;
   }
 }
