@@ -1,11 +1,14 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import CustomInput from "../ui/customInput"
+import { AlertContext } from "../ui/alert/alertContext"
 
 export default function Contact() {
   const [name, setName] = useState<string>("")
   const [email, setEmail] = useState<string>("")
   const [subject, setSubject] = useState<string>("")
   const [content, setContent] = useState<string>("")
+
+  const { showAlert } = useContext(AlertContext)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -18,9 +21,9 @@ export default function Contact() {
         body: JSON.stringify({ name, email, subject, content }),
       })
       const data = await response.json()
-      alert(data.message)
+      showAlert("Success", data.message)
     } catch (error) {
-      alert("An error occurred, please try again later")
+      showAlert("Error", "An error occurred, please try again later.")
     }
     setName("")
     setEmail("")

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import "./ui/globals.css"
 import localFont from "next/font/local"
+import { AlertProvider } from "./ui/alert/alertContext"
 
 const nostalgia = localFont({
   src: [{ path: "./ui/fonts/16-bit-7x9-nostalgia.ttf", weight: "400" }],
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nostalgia.variable} antialiased`}>{children}</body>
+      <body className={`${nostalgia.variable} antialiased`}>
+        <AlertProvider>{children}</AlertProvider>
+      </body>
     </html>
   )
 }
