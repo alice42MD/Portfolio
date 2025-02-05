@@ -51,7 +51,7 @@ export const AlertProvider: React.FC<AlertContextProvider> = ({ children }) => {
           onClose={() => hideAlert(index)}
         />
       ))}
-      {/* {children} */}
+      {children}
     </AlertContext.Provider>
   )
 }

@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        nostagia: ['var(--font-nostalgia)']
+      },
       colors: {
         background: "rgb(var(--background))",
         primary: "rgb(var(--primary))",

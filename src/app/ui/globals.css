@@ -34,7 +34,6 @@
 
 body {
   background: theme("colors.background");
-  font-family: Arial, Helvetica, sans-serif;
   color: theme("colors.primary");
 }
 
@@ -153,4 +152,12 @@ body {
     height: 1rem;
     width: 10px;
   }
+}
+
+/* ALERT */
+#alert {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  z-index: 1;
 }
