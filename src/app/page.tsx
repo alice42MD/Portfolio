@@ -1,11 +1,12 @@
 "use client"
 
-import { ReactNode, useEffect, useState } from "react"
+import { ReactNode, useEffect, useState, lazy, Suspense } from "react"
 import { useTypewriter } from "./utils/useTypeWriter"
 import { categories } from "./utils/categories"
 import Header from "./ui/header"
-import Background from "./ui/background"
-import Content from "./ui/content"
+
+const Background = lazy(() => import("./ui/background"))
+const Content = lazy(() => import("./ui/content"))
 
 export default function Home() {
   const [text, setText] = useState<string>("")
