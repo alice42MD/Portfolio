@@ -68,7 +68,8 @@ export default function Home() {
   }
 
   return (
-    theme && (
+    theme &&
+    Background && (
       <div className="flex flex-col min-h-screen">
         <Background />
         <header className="sticky z-50 top-0 p-4">
