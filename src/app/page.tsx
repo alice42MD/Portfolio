@@ -36,7 +36,6 @@ export default function Home() {
 
   const renderCategories = () => {
     return categories
-      .sort((a, b) => a.name.localeCompare(b.name))
       .filter((a) => a.name !== `${theme}_mode.ts`)
       .map((category) => (
         <div

@@ -24,16 +24,8 @@ type Category =
 type Categories = Category[]
 
 export const categories: Categories = [
-  // theme mode
-  {
-    name: "light_mode.ts",
-    access: "ts-node",
-    theme: "light",
-  },
-  { name: "dark_mode.ts", access: "ts-node", theme: "dark" },
   // Components
   // { name: "Projects", access: "cd", child: <ListProjects /> },
-  { name: "README.md", access: "cat", child: <AboutMe /> },
   {
     name: "Contact",
     access: "mail",
@@ -61,4 +53,11 @@ export const categories: Categories = [
         "noopener,noreferrer"
       ),
   },
+  {
+    name: "light_mode.ts",
+    access: "ts-node",
+    theme: "light",
+  },
+  { name: "dark_mode.ts", access: "ts-node", theme: "dark" },
+  { name: "README.md", access: "cat", child: <AboutMe /> },
 ]
