@@ -1,5 +1,5 @@
-import ErrorIcon from "../svg/error"
-import OkIcon from "../svg/ok"
+import ErrorIcon from "../svg/errorIcon"
+import OkIcon from "../svg/okIcon"
 import React from "react"
 
 type AlertType = "Success" | "Error" | "Warning"

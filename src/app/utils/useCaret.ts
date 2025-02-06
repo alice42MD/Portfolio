@@ -46,7 +46,7 @@ function useCaret(content: string | any[]) {
     }
   }
 
-  function handleOnFocus(event: any) {
+  function handleOnFocus() {
     setPaused(false);
   }
 

@@ -1,16 +1,33 @@
-import React, { useRef } from "react"
+import React from "react"
 import useCaret from "../utils/useCaret"
+import { Path, UseFormRegister, ValidationRule } from "react-hook-form"
+
+interface IFormValues {
+  name: string
+  email: string
+  subject: string
+  content: string
+}
+
+type InputProps = {
+  label: Path<IFormValues>
+  register: UseFormRegister<IFormValues>
+  required: boolean
+  pattern?: ValidationRule<RegExp>
+}
 
 const CustomInput = ({
   id,
   type,
   value,
   setValue,
+  formValidation,
 }: {
-  id: "name" | "email" | "subject" | "message"
+  id: "name" | "email" | "subject" | "content"
   type: "text" | "email" | "textarea"
   value: string
   setValue: (value: string) => void
+  formValidation: InputProps
 }) => {
   const {
     handleOnFocus: handleOnFocusCaret,
@@ -20,8 +37,8 @@ const CustomInput = ({
     paused,
   } = useCaret(value)
 
-  function handleOnFocusLabel(event: any) {
-    handleOnFocusCaret(event)
+  function handleOnFocusLabel() {
+    handleOnFocusCaret()
   }
 
   const caretPosition = value.length - shifts
@@ -32,6 +49,7 @@ const CustomInput = ({
     value.slice(caretPosition + 1),
   ]
 
+  const { register, label, pattern, required } = formValidation
   return (
     <label className="label caret-text" onClick={handleOnFocusLabel}>
       <span className={`input-mirror ${type === "textarea" && "h-[250px]"}`}>
@@ -48,22 +66,28 @@ const CustomInput = ({
           rows={5}
           className="inputHidde"
           id={id}
-          required
           value={value}
           onKeyDown={handleKeyDown}
-          onChange={(e) => setValue(e.target.value)}
-          onBlur={handleOnBlur}
+          {...register(label, {
+            required: required,
+            onBlur: handleOnBlur,
+            onChange: (e) => setValue(e.target.value),
+            pattern: pattern,
+          })}
         />
       ) : (
         <input
-          required
           className="inputHidde"
           onKeyDown={handleKeyDown}
-          onChange={(e) => setValue(e.target.value)}
-          onBlur={handleOnBlur}
           id={id}
           type={type}
           value={value}
+          {...register(label, {
+            required: required,
+            onBlur: handleOnBlur,
+            onChange: (e) => setValue(e.target.value),
+            pattern: pattern,
+          })}
         />
       )}
     </label>
