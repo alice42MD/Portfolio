@@ -2,15 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: 6, 102, 6;
-    --primary: 22, 163, 74;
-    --shadowColor: 114, 241, 76;
-    --my-opacity: 0.8;
-  }
-}
-
 .dark {
   --background: 6, 102, 6;
   --primary: 22, 163, 74;
