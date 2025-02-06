@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useCursor(content: string | any[]) {
+function useCaret(content: string | any[]) {
   const [shifts, setShifts] = useState(0);
   const [paused, setPaused] = useState(true);
 
@@ -68,4 +68,4 @@ function useCursor(content: string | any[]) {
   };
 }
 
-export default useCursor;
+export default useCaret;

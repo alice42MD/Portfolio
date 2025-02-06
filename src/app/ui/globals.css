@@ -2,13 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* :root {
-  --background: 42, 6, 205;
-  --primary: 255, 255, 0;
-  --shadowColor: 244, 247, 18;
-  --my-opacity: 0.6;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: 6, 102, 6;
@@ -16,7 +9,7 @@
     --shadowColor: 114, 241, 76;
     --my-opacity: 0.8;
   }
-} */
+}
 
 .dark {
   --background: 6, 102, 6;
@@ -112,7 +105,7 @@ body {
   overflow: hidden;
   padding: 0;
   position: absolute;
-  width: 1px;
+  width: 100%;
 }
 
 @keyframes blink {

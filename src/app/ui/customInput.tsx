@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-import useCursor from "../utils/useCursor"
+import useCaret from "../utils/useCaret"
 
 const CustomInput = ({
   id,
@@ -13,35 +13,35 @@ const CustomInput = ({
   setValue: (value: string) => void
 }) => {
   const {
-    handleOnFocus: handleOnFocusCursor,
+    handleOnFocus: handleOnFocusCaret,
     handleOnBlur,
     handleKeyDown,
     shifts,
     paused,
-  } = useCursor(value)
+  } = useCaret(value)
 
   function handleOnFocusLabel(event: any) {
-    handleOnFocusCursor(event)
+    handleOnFocusCaret(event)
   }
 
-  const cursorPosition = value.length - shifts
+  const caretPosition = value.length - shifts
 
-  const [beforeCursor, inCursor, afterCursor] = [
-    value.slice(0, cursorPosition),
-    value.charAt(cursorPosition),
-    value.slice(cursorPosition + 1),
+  const [beforeCaret, inCaret, afterCaret] = [
+    value.slice(0, caretPosition),
+    value.charAt(caretPosition),
+    value.slice(caretPosition + 1),
   ]
 
   return (
-    <label className="label cursor-text" onClick={handleOnFocusLabel}>
+    <label className="label caret-text" onClick={handleOnFocusLabel}>
       <span className={`input-mirror ${type === "textarea" && "h-[250px]"}`}>
-        {beforeCursor}
+        {beforeCaret}
         <span
-          className={`text-background bg-primary ${inCursor.length > 0 ? `before:content-['${inCursor}']` : "before:content-['_']"} ${paused ? "hidden" : "animate-blink"}`}
+          className={`text-background bg-primary ${inCaret.length > 0 ? `before:content-['${inCaret}']` : "before:content-['_']"} ${paused ? "hidden" : "animate-blink"}`}
         >
-          {inCursor}
+          {inCaret}
         </span>
-        {afterCursor}
+        {afterCaret}
       </span>
       {type === "textarea" ? (
         <textarea
