@@ -42,7 +42,6 @@ const Alert: React.FC<AlertProps> = ({ type, message, onClose }) => {
           {message}
         </span>
       </div>
-      {/* </div> */}
     </div>
   )
 }

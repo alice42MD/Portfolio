@@ -83,7 +83,7 @@ export default function Home() {
             />
           </main>
         </div>
-        <footer className="sticky z-50 bottom-0 p-8"></footer>
+        <footer className="sticky z-50 bottom-0 p-8 sm:p-6"></footer>
       </div>
     )
   )
