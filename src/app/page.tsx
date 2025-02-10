@@ -4,9 +4,8 @@ import { ReactNode, useEffect, useState, lazy, Suspense } from "react"
 import { useTypewriter } from "./utils/useTypeWriter"
 import { categories } from "./utils/categories"
 import Header from "./ui/header"
-
-const Background = lazy(() => import("./ui/background"))
-const Content = lazy(() => import("./ui/content"))
+import Content from "./ui/content"
+import Background from "./ui/background"
 
 export default function Home() {
   const [text, setText] = useState<string>("")
@@ -83,7 +82,7 @@ export default function Home() {
             />
           </main>
         </div>
-        <footer className="sticky z-50 bottom-0 p-8"></footer>
+        <footer className="sticky z-50 bottom-0 p-8 sm:p-6"></footer>
       </div>
     )
   )
