@@ -17,20 +17,16 @@ type AlertContextProvider = {
   children: ReactNode
 }
 
-// Create a new context for the Alert
 export const AlertContext = createContext<AlertContext>({
   showAlert: () => {},
 })
 
 export const AlertProvider: React.FC<AlertContextProvider> = ({ children }) => {
   const [alertMessages, setAlertMessages] = useState<Alert[]>([])
-
-  // Function to hide an alert based on its index
   const hideAlert = (index: number) => {
     setAlertMessages((prev) => prev.filter((_, i) => i !== index))
   }
 
-  // Context value containing the showAlert function
   const contextValue: AlertContext = {
     showAlert: (type, message) => {
       const alertMessage: Alert = {
