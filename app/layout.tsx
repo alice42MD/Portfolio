@@ -14,6 +14,7 @@ const nostalgia = localFont({
 export const metadata: Metadata = {
   title: "Alice Portfolio",
   description: "A retro term to introduce myself",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1", // <-- now here
 }
 export const viewport: Viewport = {
   width: "device-width",
