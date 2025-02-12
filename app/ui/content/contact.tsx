@@ -1,8 +1,8 @@
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useContext, useState } from "react"
-import CustomInput from "../ui/customInput"
-import { AlertContext } from "../ui/alert/alertContext"
-import ErrorInputForm from "../ui/errorInputForm"
+import CustomInput from "../customInput"
+import { AlertContext } from "../alert/alertContext"
+import ErrorInputForm from "../errorInputForm"
 
 export type Inputs = {
   name: string
@@ -27,7 +27,7 @@ export default function Contact() {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       const { name, email, subject, content } = data
-      const response = await fetch(`/api/`, {
+      const response = await fetch(`/email/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,8 +44,6 @@ export default function Contact() {
     setSubject("")
     setContent("")
   }
-
-  console.log("errors", errors)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>

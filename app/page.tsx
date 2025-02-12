@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode, useEffect, useState, lazy, Suspense } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import { useTypewriter } from "./utils/useTypeWriter"
 import { categories } from "./utils/categories"
 import Header from "./ui/header"

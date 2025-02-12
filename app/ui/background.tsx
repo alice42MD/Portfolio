@@ -1,5 +1,5 @@
-import scanlines from "../../../public/scanlines.png"
-import bezel from "../../../public/bezel.png"
+import scanlines from "@/public/scanlines.png"
+import bezel from "@/public/bezel.png"
 import Image from "next/image"
 
 export default function Background() {
@@ -11,13 +11,13 @@ export default function Background() {
         }
         alt="scanlines"
         src={scanlines}
-        loading="lazy"
+        priority={true}
       />
       <Image
         className={"absolute w-full h-full top-0 left-0 pointer-events-none"}
         alt="bezel"
         src={bezel}
-        loading="lazy"
+        priority={true}
       />
     </div>
   )

@@ -40,7 +40,7 @@ export const TicketCreated = ({
           <Text>Subject:{subject}</Text>
           <Text>Message: </Text>
           <Text>{content}</Text>
-          <Text>Sent via Portfolio/Contact</Text>
+          <Text>Sent via Portfolio/Contact - {ticketID}</Text>
         </Container>
       </Body>
     </Html>
