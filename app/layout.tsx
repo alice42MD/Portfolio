@@ -3,6 +3,7 @@ import "./ui/globals.css"
 import localFont from "next/font/local"
 import { AlertProvider } from "./ui/alert/alertContext"
 import { ThemeProvider } from "next-themes"
+import { Analytics } from "@vercel/analytics/react"
 
 const nostalgia = localFont({
   src: [{ path: "./ui/fonts/16-bit-7x9-nostalgia.ttf", weight: "400" }],
@@ -25,6 +26,7 @@ export default function RootLayout({
         <ThemeProvider attribute={"class"}>
           <AlertProvider>{children}</AlertProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
