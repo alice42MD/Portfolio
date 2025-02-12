@@ -38,9 +38,7 @@ const Alert: React.FC<AlertProps> = ({ type, message, onClose }) => {
         ) : (
           <OkIcon className={"fill-primary drop-shadow-shadow"} />
         )}
-        <span onClick={onClose} className="drop-shadow-shadow">
-          {message}
-        </span>
+        <span className="drop-shadow-shadow">{message}</span>
       </div>
     </div>
   )
