@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import "./ui/globals.css"
 import localFont from "next/font/local"
 import { AlertProvider } from "./ui/alert/alertContext"
@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   title: "Alice Portfolio",
   description: "A retro term to introduce myself",
 }
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
 
 export default function RootLayout({
   children,
@@ -24,7 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
       </Head>
       <body className={`${nostalgia.variable} antialiased`}>
         <ThemeProvider attribute={"class"}>
