@@ -35,7 +35,7 @@ export default function Contact() {
         body: JSON.stringify({ name, email, subject, content }),
       })
       const dataResponse = await response.json()
-      showAlert("Success", dataResponse.content)
+      showAlert("Success", dataResponse.message)
     } catch (error) {
       showAlert("Error", "An error occurred, please try again later.")
     }
