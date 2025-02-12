@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertContext } from '@/src/app/ui/alert/alertContext';
+import { AlertContext } from '@/app/ui/alert/alertContext';
 import { useContext } from 'react';
 
 export const useAlert = () => {

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as generateID } from "uuid";
-import TicketCreated from "../../emails/ticketCreated";
+import TicketCreated from "./ticketCreated";
 import { Resend } from "resend";
 
 

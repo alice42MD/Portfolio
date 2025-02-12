@@ -1,8 +1,8 @@
 import { ReactNode } from "react"
-import AboutMe from "../content/aboutMe"
-import Contact from "../content/contact"
-import CV from "../content/cv"
-import ListProjects from "../content/listProjects"
+import AboutMe from "../ui/content/aboutMe"
+import Contact from "../ui/content/contact"
+import CV from "../ui/content/cv"
+import ListProjects from "../ui/content/listProjects"
 
 type Category =
   | {

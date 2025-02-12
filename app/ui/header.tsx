@@ -71,3 +71,20 @@ export default function Header() {
     </div>
   )
 }
+
+//
+
+{
+  /* <div className="flex flex-col w-auto items-center ">
+<div className="up h-2 w-[110%] rounded-[50%] mr-1 ml-1 border-t-[3px] border-primary border-dashed m-r-[4px]" />
+<div className="flex flex-row flex-wrap w-full justify-between">
+  <div className="right h-auto w-2 rounded-[50%]  border-l-[3px] border-primary border-dashed" />
+  <div className={` flex flex-col items-center m-4 p-3`}>
+    <MyComponentTitle />
+    <MyComponentSubTitle />
+  </div>
+  <div className="left h-auto w-2 rounded-[50%]  border-r-[3px] border-primary border-dashed" />
+</div>
+<div className="bottom h-2 w-[110%] rounded-[50%] mr-1 ml-1  border-b-[3px] border-primary border-dashed" />
+</div> */
+}

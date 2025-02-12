@@ -1,5 +1,5 @@
 import { FieldErrors } from "react-hook-form"
-import { Inputs } from "../content/contact"
+import { Inputs } from "./content/contact"
 import WarningIcon from "./svg/warningIcon"
 
 export default function ErrorInputForm({
