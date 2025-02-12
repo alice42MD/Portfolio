@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${nostalgia.variable} antialiased`}>
-        <ThemeProvider>
+        <ThemeProvider attribute={"class"}>
           <AlertProvider>{children}</AlertProvider>
         </ThemeProvider>
       </body>
