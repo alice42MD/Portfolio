@@ -1,5 +1,5 @@
 "use client"
-import React, { ReactNode, createContext, useEffect, useState } from "react"
+import React, { ReactNode, createContext, useState } from "react"
 import Alert from "./alert"
 
 type AlertType = "Success" | "Error" | "Warning"
