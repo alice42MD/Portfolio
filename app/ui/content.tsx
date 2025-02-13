@@ -10,10 +10,7 @@ export default function Content({
   child: string | undefined | ReactNode
 }) {
   return (
-    <div
-      className="mx-6 md:mx-10 pl-[35px] pr-[35px] size-fill drop-shadow-shadow"
-      id={"content"}
-    >
+    <div className="mx-6 md:mx-10 pl-[35px] pr-[35px] drop-shadow-shadow">
       <div className="font-[family-name:var(--font-nostalgia)] text-[17px] ">
         <div className="my-4">
           <span>Portfolio ~$: {"> "}</span>
@@ -28,7 +25,7 @@ export default function Content({
           <span>Portfolio ~$: {"> "}</span>
           <span>{displayedCategory}</span>
         </div>
-        <div className="h-10">{child}</div>
+        <div>{child}</div>
       </div>
     </div>
   )

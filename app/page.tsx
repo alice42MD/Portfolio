@@ -68,20 +68,18 @@ export default function Home() {
 
   return (
     theme && (
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col h-dvh overflow-scroll">
         <Background />
         <header className="sticky z-50 top-0 p-4">
           <Header />
         </header>
-        <div className="flex-grow overflow-scroll">
-          <main>
-            <Content
-              categories={renderCategories()}
-              displayedCategory={displayedCategory}
-              child={child}
-            />
-          </main>
-        </div>
+        <main className="flex-grow h-screen overflow-scroll">
+          <Content
+            categories={renderCategories()}
+            displayedCategory={displayedCategory}
+            child={child}
+          />
+        </main>
         <footer className="sticky z-50 bottom-0 p-8 sm:p-6"></footer>
       </div>
     )
