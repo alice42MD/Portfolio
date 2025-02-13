@@ -1,8 +1,13 @@
 import scanlines from "@/public/scanlines.png"
 import bezel from "@/public/bezel.png"
 import Image from "next/image"
+import { useEffect } from "react"
 
-export default function Background() {
+const Background = ({ onLoad }: { onLoad: () => void }) => {
+  useEffect(() => {
+    onLoad()
+  }, [])
+
   return (
     <div>
       <Image
@@ -11,14 +16,13 @@ export default function Background() {
         }
         alt="scanlines"
         src={scanlines}
-        priority={true}
       />
       <Image
         className={"absolute w-full h-full top-0 left-0 pointer-events-none"}
         alt="bezel"
         src={bezel}
-        priority={true}
       />
     </div>
   )
 }
+export default Background

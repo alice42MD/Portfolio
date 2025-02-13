@@ -1,10 +1,9 @@
-import type { Metadata, Viewport } from "next"
+import type { Metadata } from "next"
 import "./ui/globals.css"
 import localFont from "next/font/local"
 import { AlertProvider } from "./ui/alert/alertContext"
 import { ThemeProvider } from "next-themes"
 import { Analytics } from "@vercel/analytics/react"
-import Head from "next/head"
 
 const nostalgia = localFont({
   src: [{ path: "./ui/fonts/16-bit-7x9-nostalgia.ttf", weight: "400" }],
@@ -14,13 +13,6 @@ const nostalgia = localFont({
 export const metadata: Metadata = {
   title: "Alice Portfolio",
   description: "A retro term to introduce myself",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1", // <-- now here
-}
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 }
 
 export default function RootLayout({
@@ -29,15 +21,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-        />
-      </Head>
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={`${nostalgia.variable} antialiased`}>
-        <ThemeProvider attribute={"class"}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AlertProvider>{children}</AlertProvider>
         </ThemeProvider>
         <Analytics />

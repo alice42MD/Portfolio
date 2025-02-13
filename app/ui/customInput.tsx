@@ -51,7 +51,10 @@ const CustomInput = ({
 
   const { register, label, pattern, required } = formValidation
   return (
-    <label className="label caret-text" onClick={handleOnFocusLabel}>
+    <label
+      className="label caret-text cursor-pointer"
+      onClick={handleOnFocusLabel}
+    >
       <span className={`input-mirror ${type === "textarea" && "h-[250px]"}`}>
         {beforeCaret}
         <span

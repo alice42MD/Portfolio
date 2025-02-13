@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        nostagia: ['var(--font-nostalgia)']
+        nostalgia: ['var(--font-nostalgia)']
       },
       colors: {
         background: "rgb(var(--background))",
