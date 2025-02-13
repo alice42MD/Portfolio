@@ -21,7 +21,11 @@ export default {
       },
       opacity: {
         myOpacity: 'var(--myOpacity)'
-      }
+      },
+      cursor: {
+        default: 'url(/cursorDefault.svg), default',
+        pointer: 'url(/cursorPointer.svg), pointer',
+      },
     },
   },
   plugins: [],
