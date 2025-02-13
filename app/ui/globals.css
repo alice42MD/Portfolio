@@ -19,6 +19,7 @@
 body {
   background: theme("colors.background");
   color: theme("colors.primary");
+  cursor: theme("cursor.default");
 }
 
 /* HEADER */
