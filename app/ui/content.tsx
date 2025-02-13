@@ -6,12 +6,12 @@ export default function Content({
   child,
 }: {
   categories: JSX.Element[]
-  displayedCategory: string
+  displayedCategory: JSX.Element
   child: string | undefined | ReactNode
 }) {
   return (
     <div className="mx-6 md:mx-10 pl-[35px] pr-[35px] drop-shadow-shadow">
-      <div className="font-[family-name:var(--font-nostalgia)] text-[17px] ">
+      <div className="text-[17px] ">
         <div className="my-4">
           <span>Portfolio ~$: {"> "}</span>
           <span>ls</span>

@@ -17,7 +17,7 @@ const Alert: React.FC<AlertProps> = ({ type, message, onClose }) => {
       style={{
         filter: "drop-shadow(2px 4px 6px black)",
       }}
-      className="font-nostagia alert-box flex w-full flex-col max-w-[400px] transform items-start justify-start bg-background ease-in-out"
+      className=" alert-box flex w-full flex-col max-w-[400px] transform items-start justify-start bg-background ease-in-out"
     >
       <div
         className="absolute h-full flex flex-col w-full  pointer-events-none items-start opacity-myOpacity"

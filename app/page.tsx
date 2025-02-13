@@ -1,37 +1,26 @@
 "use client"
 
-import { ReactNode, useEffect, useState } from "react"
+import { memo, ReactNode, useEffect, useState } from "react"
 import { useTypewriter } from "./utils/useTypeWriter"
 import { categories } from "./utils/categories"
 import Header from "./ui/header"
 import Content from "./ui/content"
 import Background from "./ui/background"
+import { useTheme } from "next-themes"
+
+const TypewriterComponent = memo(
+  ({ text, speed }: { text: string; speed: number }) => {
+    const displayText = useTypewriter(text, speed)
+
+    return <span>{displayText}</span>
+  }
+)
 
 export default function Home() {
+  const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false)
   const [text, setText] = useState<string>("")
-  const [theme, setTheme] = useState<string>("")
   const [child, setChild] = useState<ReactNode>(undefined)
-
-  const displayedCategory = useTypewriter(text, 50)
-
-  useEffect(() => {
-    const selectedTheme = localStorage.getItem("theme")
-    setTheme(selectedTheme ?? "dark")
-  }, [])
-
-  useEffect(() => {
-    if (theme) {
-      localStorage.setItem("theme", `${theme}`)
-      const selectedTheme = localStorage.getItem("theme")
-      if (selectedTheme === "light") {
-        document.body.classList.add(selectedTheme)
-        document.body.classList.remove("dark")
-      } else {
-        document.body.classList.add("dark")
-        document.body.classList.remove("light")
-      }
-    }
-  }, [theme])
+  const { theme, setTheme } = useTheme()
 
   const renderCategories = () => {
     return categories
@@ -67,21 +56,23 @@ export default function Home() {
   }
 
   return (
-    theme && (
-      <div className="flex flex-col h-dvh overflow-scroll">
-        <Background />
-        <header className="sticky z-50 top-0 p-4">
-          <Header />
-        </header>
-        <main className="flex-grow h-screen overflow-scroll">
-          <Content
-            categories={renderCategories()}
-            displayedCategory={displayedCategory}
-            child={child}
-          />
-        </main>
-        <footer className="sticky z-50 bottom-0 p-8 sm:p-6"></footer>
-      </div>
-    )
+    <div className="flex flex-col h-dvh overflow-scroll">
+      <Background onLoad={() => setIsBackgroundLoaded(true)} />
+      {isBackgroundLoaded && (
+        <>
+          <header className="sticky z-50 top-0 p-4">
+            <Header />
+          </header>
+          <main className="flex-grow h-screen overflow-scroll">
+            <Content
+              categories={renderCategories()}
+              displayedCategory={<TypewriterComponent text={text} speed={50} />}
+              child={child}
+            />
+          </main>
+          <footer className="sticky z-50 bottom-0 p-8 sm:p-6"></footer>
+        </>
+      )}
+    </div>
   )
 }

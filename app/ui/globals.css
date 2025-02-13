@@ -16,10 +16,15 @@
   --myOpacity: 0.6;
 }
 
-body {
+html {
+  font-family: theme("fontFamily.nostalgia");
   background: theme("colors.background");
   color: theme("colors.primary");
   cursor: theme("cursor.default");
+}
+
+body {
+  font-family: theme("fontFamily.nostalgia");
 }
 
 /* HEADER */
