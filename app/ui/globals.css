@@ -40,7 +40,6 @@ body {
 .content {
   background: none;
   border: 0;
-
   position: relative;
   vertical-align: middle;
 
@@ -88,6 +87,7 @@ body {
   }
 }
 
+/* CARET & INPUT */
 .inputHidde {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
