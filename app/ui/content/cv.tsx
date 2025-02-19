@@ -1,6 +1,6 @@
 export default function CV() {
   return (
-    <div className="grid grid-cols-4 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
       <div className="w-full">
         <h2>SKILLS</h2>
         <br />
@@ -22,6 +22,7 @@ export default function CV() {
           <li>HTML</li>
           <li>CSS</li>
           <li>Git</li>
+          <li>Github Actions</li>
           <li>Npm</li>
           <li>Yarn</li>
           <li>SQL</li>
