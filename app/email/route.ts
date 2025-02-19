@@ -3,7 +3,7 @@ import { v4 as generateID } from "uuid";
 import TicketCreated from "./ticketCreated";
 import { Resend } from "resend";
 
-
+//shouldnt be exposed in frontend :/
 const resend = new Resend(process.env.RESEND_API_KEY);
 const toEmail = "alicemartin.crea@gmail.com"
 
