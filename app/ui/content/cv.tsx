@@ -53,7 +53,7 @@ export default function CV() {
         <span>Front-End Developer</span> <br />
         <span>Reelevant, Paris</span> <br />
         <span>March 2021 – March 2023</span> <br />
-        <ul className="list-inside list-[square]">
+        <ul className="list-[square]">
           <li>
             Contribution to the design and implementation of highly interactive
             and user-friendly user interfaces for various issues (Monorepo/4
@@ -84,7 +84,7 @@ export default function CV() {
         <span>R&D Developer - Lab 42</span> <br />
         <span>Veepee, Saint-Denis</span> <br />
         <span>March 2019 – March 2020</span> <br />
-        <ul className="list-inside list-[square]">
+        <ul className="list-[square]">
           <li> Creation of a single-page application project generator</li>
           <li>
             Creation of a tool for visualizing cloud resources and optimizing

@@ -63,7 +63,7 @@ export default function Home() {
           <header className="sticky z-50 top-0 p-4">
             <Header />
           </header>
-          <main className="flex-grow h-screen overflow-scroll">
+          <main className="flex-grow h-screen overflow-scroll mb-4">
             <Content
               categories={renderCategories()}
               displayedCategory={<TypewriterComponent text={text} speed={50} />}
