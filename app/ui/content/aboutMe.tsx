@@ -1,4 +1,13 @@
+import { ChiracContext } from "../chirac/chiracContext"
+import { useContext } from "react"
+
 export default function AboutMe() {
+  const { showAlert } = useContext(ChiracContext)
+
+  const handleShow = () => {
+    console.log("A")
+    showAlert(true)
+  }
   return (
     <div>
       <span>Hey! I'am Alice</span>
@@ -14,17 +23,17 @@ export default function AboutMe() {
         As a front-end developer, my journey is a bit unconventional: after
         running a bar and working in film set design, I dove into coding by
         joining 42.
-      </span>{" "}
+      </span>
       <br />
       <span>
         I specialize in TypeScript and React to create dynamic and intuitive
         interfaces.
-      </span>{" "}
+      </span>
       <br />
       <span>
         Very interested in design, I love imagining user experiences that are
         harmonious and aesthetic, where ergonomics meet creativity.
-      </span>{" "}
+      </span>
       <br />
       <span>
         I enjoy learning, experimenting, and finding elegant solutions to
@@ -42,8 +51,12 @@ export default function AboutMe() {
       <br />
       <br />
       <span>
-        When I'm not coding or crafting, I enjoy the company of my cat, Chirac,
-        who has as much charisma as his namesake.
+        When I'm not coding or crafting, I enjoy the company of my cat,
+        <span className="cursor-pointer" onClick={handleShow}>
+          {" "}
+          Chirac
+        </span>
+        , who has as much charisma as his namesake.
       </span>
       <br />
       <br />
