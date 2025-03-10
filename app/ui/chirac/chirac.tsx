@@ -136,16 +136,18 @@ export default function Chirac() {
 
   return (
     <div ref={refDivElement} className="h-full">
-      <>
-        <div className="z-50 absolute top-2/3 left-2/3 drop-shadow-shadow">
-          <>YOU HAVE BEEN CHIR-HACKED</>
-          <div>send coquettes and I might delete virus</div>
-        </div>
-        <canvas
-          ref={refCanvasElement}
-          className="canvas w-full h-full"
-        ></canvas>
-      </>
+      {myImage && (
+        <>
+          <div className="z-50 absolute top-2/3 left-2/3 drop-shadow-shadow">
+            <>YOU HAVE BEEN CHIR-HACKED</>
+            <div>send coquettes and I might delete virus</div>
+          </div>
+          <canvas
+            ref={refCanvasElement}
+            className="canvas w-full h-full"
+          ></canvas>
+        </>
+      )}
     </div>
   )
 }
