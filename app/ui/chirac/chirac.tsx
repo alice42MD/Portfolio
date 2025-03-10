@@ -28,7 +28,7 @@ export default function Chirac() {
   const refDivElement = useRef<HTMLDivElement>(null)
   const refCanvasElement = useRef<HTMLCanvasElement>(null)
 
-  const { theme } = useTheme()
+  const { systemTheme } = useTheme()
 
   const initParticles = useCallback((canvas: { width: number }) => {
     let particles: ParticleType[] = []
@@ -50,7 +50,7 @@ export default function Chirac() {
     return particles
   }, [])
 
-  console.log(theme)
+  console.log(systemTheme)
 
   const myImage = new Image()
   myImage.src = chiracos.src
@@ -108,7 +108,7 @@ export default function Chirac() {
 
       function draw(ctx: CanvasRenderingContext2D, particle: any) {
         ctx.font = "12px"
-        ctx.fillStyle = theme === "dark" ? "lime" : "yellow"
+        ctx.fillStyle = systemTheme === "dark" ? "lime" : "yellow"
         ctx.fillText(particle.randomChar, particle.x, particle.y)
       }
 
@@ -117,7 +117,7 @@ export default function Chirac() {
         canvas: HTMLCanvasElement
       ) {
         ctx.globalAlpha = 0.05
-        ctx.fillStyle = colors[theme as keyof typeof colors].background
+        ctx.fillStyle = colors[systemTheme as keyof typeof colors].background
         // ctx.fillStyle = "black"
         ctx.fillRect(0, 0, canvas.width, canvas.height)
         ctx.globalAlpha = 0.2

@@ -21,11 +21,11 @@ export default function Home() {
   const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false)
   const [text, setText] = useState<string>("")
   const [child, setChild] = useState<ReactNode>(undefined)
-  const { theme, setTheme } = useTheme()
+  const { setTheme, systemTheme } = useTheme()
 
   const renderCategories = () => {
     return categories
-      .filter((a) => a.name !== `${theme}_mode.ts`)
+      .filter((a) => a.name !== `${systemTheme}_mode.ts`)
       .map((category) => (
         <div
           key={category.name}
