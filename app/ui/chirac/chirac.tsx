@@ -61,8 +61,6 @@ export default function Chirac() {
     return particles
   }, [])
 
-  console.log(systemTheme)
-
   const myImage = new Image(chiracos.width, chiracos.height)
   myImage.src = chiracos.src
 
@@ -155,7 +153,7 @@ export default function Chirac() {
 
   return (
     <div ref={refDivElement} className="h-full">
-      {chiracos && (
+      {refCanvasElement && (
         <>
           <div className="z-50 absolute top-2/3 left-2/3 drop-shadow-shadow">
             <TypewriterComponent
