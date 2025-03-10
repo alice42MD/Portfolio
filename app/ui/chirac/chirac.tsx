@@ -1,7 +1,7 @@
 import { useTypewriter } from "@/app/utils/useTypeWriter"
 import chiracos from "@/public/chirhacker.png"
 import { useTheme } from "next-themes"
-import { memo, useEffect, useRef } from "react"
+import { memo, useCallback, useEffect, useRef } from "react"
 
 const colors = {
   dark: {
@@ -35,136 +35,96 @@ const TypewriterComponent = memo(
 )
 
 export default function Chirac() {
-  const refDivElement = useRef<HTMLDivElement>(null)
-  const refCanvasElement = useRef<HTMLCanvasElement>(null)
-
+  const refDiv = useRef<HTMLDivElement>(null)
+  const refCanvas = useRef<HTMLCanvasElement>(null)
   const { theme } = useTheme()
 
-  console.log(theme)
+  const initParticles = useCallback(
+    (canvas: { width: number }, ctx: any, mappedImage: any) => {
+      let particles = []
+      const chars = ["A", "C", "H", "I", "R", "a", "c", "h", "i", "r", 0, 1]
+      for (let i = 0; i < 2000; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: 0,
+          velocity: Math.random() * 1.5,
+          randomChar: chars[Math.floor(Math.random() * chars.length)],
+        })
+      }
+      return particles
+    },
+    []
+  )
+
   useEffect(() => {
-    const canvas = refCanvasElement.current
-    if (canvas === null) return
+    const canvas = refCanvas.current
+    if (!canvas) return
     const ctx = canvas.getContext("2d")
-    if (ctx === null || ctx === undefined) return
-    canvas.width = refDivElement.current?.getBoundingClientRect().width ?? 0
-    canvas.height = refDivElement.current?.getBoundingClientRect().height ?? 0
-    const myImage = new Image()
-    myImage.src = chiracos.src
+    if (!ctx) return
 
-    myImage.addEventListener("load", function () {
-      ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height)
-      const pixels = ctx?.getImageData(0, 0, canvas.width, canvas.height)
-
-      let particlesArray: ParticleType[] = []
-      const numberOfParticles = 2000
-
-      let mappedImage: number[][][] = []
-
-      for (let y = 0; y < canvas?.height; y++) {
-        let row = []
-        for (let x = 0; x < canvas?.width; x++) {
-          const red = pixels?.data[y * 4 * pixels?.width + x * 4]
-          const green = pixels?.data[y * 4 * pixels?.width + (x * 4 + 1)]
-          const blue = pixels?.data[y * 4 * pixels?.width + (x * 4 + 2)]
-          const brightness = calculateRelativeBrightness(red, green, blue)
-          const cell = [brightness]
-          row.push(cell)
-        }
-        mappedImage.push(row)
+    const resizeCanvas = () => {
+      if (refDiv.current) {
+        canvas.width = refDiv.current.offsetWidth
+        canvas.height = refDiv.current.offsetHeight
       }
+    }
 
-      function calculateRelativeBrightness(
-        red: number | undefined,
-        green: number | undefined,
-        blue: number | undefined
-      ) {
-        return (
-          Math.sqrt(
-            (red ?? 0) * (red ?? 0) * 0.299 +
-              (green ?? 0) * (green ?? 0) * 0.187 +
-              (blue ?? 0) * (blue ?? 0) * 0.014
-          ) / 100
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
+
+    const img = new Image()
+    img.src = chiracos.src
+    const cleanup = () => {
+      img.onload = null
+      window.removeEventListener("resize", resizeCanvas)
+    }
+
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+      const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height)
+      let mappedImage = Array.from({ length: canvas.height }, (_, y) =>
+        Array.from(
+          { length: canvas.width },
+          (_, x) =>
+            Math.sqrt(
+              pixels.data[y * 4 * pixels.width + x * 4] ** 2 * 0.299 +
+                pixels.data[y * 4 * pixels.width + (x * 4 + 1)] ** 2 * 0.587 +
+                pixels.data[y * 4 * pixels.width + (x * 4 + 2)] ** 2 * 0.114
+            ) / 100
         )
-      }
+      )
 
-      function update(
-        particle: ParticleType,
-        canvas: { height: number; width: number }
-      ) {
-        particle.position1 = Math.floor(particle.y)
-        particle.position2 = Math.floor(particle.x)
-        particle.speed = mappedImage[particle.position1][particle.position2][0]
-        let movement = 1.5 - particle.speed + particle.velocity
+      let particles = initParticles(canvas, ctx, mappedImage)
 
-        particle.y += movement
-        if (particle.y > canvas.height) {
-          particle.y = 0
-          particle.x = Math.random() * canvas.width
-        }
-      }
-
-      function draw(ctx: CanvasRenderingContext2D, particle: any) {
-        ctx.font = "12px"
-        ctx.fillStyle = theme === "dark" ? "lime" : "yellow"
-        ctx.fillText(particle.randomChar, particle.x, particle.y)
-      }
-
-      function init(canvas: HTMLCanvasElement) {
-        for (let i = 0; i < numberOfParticles; i++) {
-          const characters = [
-            "A",
-            "C",
-            "H",
-            "I",
-            "R",
-            "a",
-            "c",
-            "h",
-            "i",
-            "r",
-            0,
-            1,
-          ]
-          const x = Math.random() * canvas.width
-          const y = 0
-          particlesArray.push({
-            x,
-            y: 0,
-            speed: 0,
-            velocity: Math.random() * 1.5,
-            size: Math.random() * 1.5 + 1,
-            position1: Math.floor(y),
-            position2: Math.floor(x),
-            randomChar:
-              characters[Math.trunc(Math.random() * characters.length)],
-          })
-        }
-      }
-
-      function animate(
-        ctx: CanvasRenderingContext2D,
-        canvas: HTMLCanvasElement
-      ) {
+      const animate = () => {
         ctx.globalAlpha = 0.05
-        ctx.fillStyle = colors[theme as keyof typeof colors].background
-        // ctx.fillStyle = "black"
+        ctx.fillStyle = theme
+          ? colors[theme as keyof typeof colors]?.background
+          : "black"
         ctx.fillRect(0, 0, canvas.width, canvas.height)
         ctx.globalAlpha = 0.2
-        particlesArray.forEach((particle, index) => {
-          update(particle, canvas)
-          ctx.globalAlpha = particlesArray[index].speed * 0.75
-          draw(ctx, particle)
+        particles.forEach((particle) => {
+          let speed =
+            mappedImage[Math.floor(particle.y)]?.[Math.floor(particle.x)] || 0
+          particle.y += 1.5 - speed + particle.velocity
+          if (particle.y > canvas.height) {
+            particle.y = 0
+            particle.x = Math.random() * canvas.width
+          }
+          ctx.font = "12px"
+          ctx.fillStyle = theme === "dark" ? "lime" : "yellow"
+          ctx.fillText(particle.randomChar.toString(), particle.x, particle.y)
         })
-        requestAnimationFrame(() => animate(ctx, canvas))
+        requestAnimationFrame(animate)
       }
+      animate()
+    }
 
-      init(canvas)
-      animate(ctx, canvas)
-    })
-  }, [])
+    return cleanup
+  }, [theme, initParticles])
 
   return (
-    <div ref={refDivElement} className="h-full">
+    <div ref={refDiv} className="h-full">
       <div className="z-50 absolute top-2/3 left-2/3 drop-shadow-shadow w-56">
         <TypewriterComponent
           text={
@@ -173,7 +133,7 @@ export default function Chirac() {
           speed={50}
         />
       </div>
-      <canvas ref={refCanvasElement} className="canvas w-full h-full"></canvas>
+      <canvas ref={refCanvas} className="canvas w-full h-full"></canvas>
     </div>
   )
 }
