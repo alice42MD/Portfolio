@@ -135,7 +135,6 @@ export default function Chirac() {
       ) {
         ctx.globalAlpha = 0.05
         ctx.fillStyle = colors[systemTheme as keyof typeof colors].background
-        // ctx.fillStyle = "black"
         ctx.fillRect(0, 0, canvas.width, canvas.height)
         ctx.globalAlpha = 0.2
         particlesArray.forEach((particle, index) => {
@@ -153,22 +152,20 @@ export default function Chirac() {
 
   return (
     <div ref={refDivElement} className="h-full">
-      {refCanvasElement && (
-        <>
-          <div className="z-50 absolute top-2/3 left-2/3 drop-shadow-shadow">
-            <TypewriterComponent
-              text={
-                "YOU HAVE BEEN CHIR-HACKED send coquettes and I might delete virus"
-              }
-              speed={50}
-            />
-          </div>
-          <canvas
-            ref={refCanvasElement}
-            className="canvas w-full h-full"
-          ></canvas>
-        </>
-      )}
+      <div className="z-50 absolute top-2/3 left-2/3 drop-shadow-shadow">
+        <TypewriterComponent
+          text={
+            "YOU HAVE BEEN CHIR-HACKED send coquettes and I might delete virus"
+          }
+          speed={50}
+        />
+      </div>
+      <canvas
+        ref={refCanvasElement}
+        width={refDivElement.current?.clientWidth}
+        height={refDivElement.current?.clientHeight}
+        className="canvas w-full h-full"
+      ></canvas>
     </div>
   )
 }
