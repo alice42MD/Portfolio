@@ -1,6 +1,7 @@
 import { useTypewriter } from "@/app/utils/useTypeWriter"
 import chiracos from "@/public/chirhacker.png"
 import { useTheme } from "next-themes"
+import { ImageOptimizerCache } from "next/dist/server/image-optimizer"
 import { memo, useCallback, useEffect, useRef } from "react"
 
 const colors = {
@@ -67,11 +68,19 @@ export default function Chirac() {
 
   useEffect(() => {
     const canvas = refCanvasElement.current
-    if (canvas === null) return
+    if (!canvas) return
     const ctx = canvas.getContext("2d")
-    if (ctx === null || ctx === undefined) return
-    canvas.width = refDivElement.current?.getBoundingClientRect().width ?? 0
-    canvas.height = refDivElement.current?.getBoundingClientRect().height ?? 0
+    if (!ctx) return
+
+    const resizeCanvas = () => {
+      if (refDivElement.current) {
+        canvas.width = refDivElement.current.clientWidth
+        canvas.height = refDivElement.current.clientHeight
+      }
+    }
+
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
 
     myImage.onload = () => {
       ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height)
