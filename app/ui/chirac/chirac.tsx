@@ -1,6 +1,7 @@
+import { useTypewriter } from "@/app/utils/useTypeWriter"
 import chiracos from "@/public/chirhacker.png"
 import { useTheme } from "next-themes"
-import { useEffect, useRef } from "react"
+import { memo, useEffect, useRef } from "react"
 
 const colors = {
   dark: {
@@ -24,6 +25,15 @@ type ParticleType = {
   position2: number
   randomChar: string | number
 }
+
+const TypewriterComponent = memo(
+  ({ text, speed }: { text: string; speed: number }) => {
+    const displayText = useTypewriter(text, speed)
+
+    return <div>{displayText}</div>
+  }
+)
+
 export default function Chirac() {
   const refDivElement = useRef<HTMLDivElement>(null)
   const refCanvasElement = useRef<HTMLCanvasElement>(null)
@@ -155,9 +165,13 @@ export default function Chirac() {
 
   return (
     <div ref={refDivElement} className="h-full">
-      <div className="z-50 absolute top-2/3 left-2/3 drop-shadow-shadow">
-        <>YOU HAVE BEEN CHIR-HACKED</>
-        <div>send coquettes and I might delete virus</div>
+      <div className="z-50 absolute top-2/3 left-2/3 drop-shadow-shadow w-56">
+        <TypewriterComponent
+          text={
+            "YOU HAVE BEEN CHIR-HACKED send coquettes and I might delete virus"
+          }
+          speed={50}
+        />
       </div>
       <canvas ref={refCanvasElement} className="canvas w-full h-full"></canvas>
     </div>
