@@ -1,12 +1,13 @@
 "use client"
 
-import { memo, ReactNode, useEffect, useState } from "react"
+import { memo, ReactNode, useState } from "react"
 import { useTypewriter } from "./utils/useTypeWriter"
 import { categories } from "./utils/categories"
 import Header from "./ui/header"
 import Content from "./ui/content"
 import Background from "./ui/background"
 import { useTheme } from "next-themes"
+import { ChiracProvider } from "./ui/chirac/chiracContext"
 
 const TypewriterComponent = memo(
   ({ text, speed }: { text: string; speed: number }) => {
@@ -54,12 +55,11 @@ export default function Home() {
         </div>
       ))
   }
-
   return (
     <div className="flex flex-col h-dvh overflow-scroll">
       <Background onLoad={() => setIsBackgroundLoaded(true)} />
       {isBackgroundLoaded && (
-        <>
+        <ChiracProvider>
           <header className="sticky z-50 top-0 p-4">
             <Header />
           </header>
@@ -71,7 +71,7 @@ export default function Home() {
             />
           </main>
           <footer className="sticky z-50 bottom-0 p-8 sm:p-6"></footer>
-        </>
+        </ChiracProvider>
       )}
     </div>
   )
